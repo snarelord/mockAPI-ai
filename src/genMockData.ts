@@ -23,7 +23,25 @@ export const genMockData = async (description: string): Promise<any> => {
       messages: [
         {
           role: "user",
-          content: `Generate realistic JSON data for the following description: ${description}. Only respond with valid JSON data if prompt contains array, include that. Do not include any additional text or explanations.`,
+          content: `Generate realistic JSON data for the following description: ${description}. Only respond with valid JSON data.
+❗IMPORTANT:
+- DO NOT include explanations, comments, or markdown.
+- Your entire output MUST be a single valid JSON object or array.
+- If the description suggests an array, include it as an array.
+- Escape all quotes, newlines, and special characters properly.
+- Do NOT include backticks, triple quotes, or code blocks.
+- Your response should start with '{' or '[' and end with '}' or ']'.
+
+Example output:
+{
+  "name": "Example",
+  "details": {
+    "quote": "He said, \\\"Hello!\\\"",
+    "code": "const x = 1;"
+  }
+}
+
+Now, generate the JSON.`,
         },
       ],
     });
