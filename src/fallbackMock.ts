@@ -2,7 +2,6 @@
 // random id gens, booleans etc
 
 export const getFallbackMock = (description: string): any => {
-  // extremely basic fallback for common cases
   if (description.toLowerCase().includes("todo")) {
     return [
       { id: 1, title: "Buy milk", isComplete: false },
