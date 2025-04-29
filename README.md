@@ -25,19 +25,29 @@ If no key is provided, AI mock generation will be disabled or fallback to static
 ```javascript
 import { mockAPI } from "mockapi-ai";
 
+// define the routes for the mock API
 const routes = [
   {
-    url: "/todos",
-    method: "GET",
-    useAI: true,
-    description: "Return a list of todos with id, title, isComplete.",
+    url: "/todos", // the endpoint for the todos
+    method: "GET", // the HTTP method to use for the request
+    useAI: true, // enable AI for generating mock data
+    description: "Fetches a list of todos, each with an id, title, and completion status.", // description of the route
   },
 ];
 
-(async () => {
-  const data = await mockAPI(routes);
-  console.log(data);
-})();
+// asynchronously fetch the mock data 
+async function fetchMockData() {
+  try {
+    const mockData = await mockAPI(routes); // fetch data based on the defined routes
+    console.log(mockData); // log the fetched mock data
+  } catch (error) {
+    console.error("Error fetching mock data:", error); // handle any errors
+  }
+}
+
+// call the function to fetch
+fetchMockData();
+
 ```
 
 ---
